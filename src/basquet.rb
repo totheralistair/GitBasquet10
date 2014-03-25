@@ -1,14 +1,15 @@
 
 class Basquet
+# ======= CLASS METHODS =======
+  def self.aPersistentBasquet
+    @@theOneAndOnlyBasquet ||= Basquet.new
+  end
 
   def self.newPersistentBasquetPlease
     @@theOneAndOnlyBasquet = Basquet.new
   end
 
-  def self.aPersistentBasquet
-    @@theOneAndOnlyBasquet ||= Basquet.new
-  end
-
+# ======= INSTANCE METHODS =======
   def initialize
     @contents = Array.new
   end
