@@ -1,9 +1,8 @@
 require 'sinatra'
-require_relative 'basquet'
-
+require_relative 'webmuffinbasquet'
 
 #class WebBasquetizer < Sinatra::Base
-    myBasquet = Basquet.aPersistentBasquet
+    myBasquet = WebMuffinBasquet.aPersistentBasquet
 
 # ==================== INITIALIZING STUFF ================
 
@@ -12,29 +11,27 @@ get '/' do
   end
 
   get '/FRESH_DB' do  # GOOK: USE ONLY FOR TESTING, NOT PRODUCTION!!
-    myBasquet = Basquet.newPersistentBasquetPlease
+    myBasquet = WebMuffinBasquet.newPersistentBasquetPlease
     out = "New basquet w #{myBasquet.size.to_s} items."
   end
 
 # ==================== STORING STUFF ================
 
+get '/addImmediate/:newStuff' do
+  theStuff = params[:newStuff]
+  addedAt = myBasquet.zadd(theStuff)
+  out = "GET/addImmediate of :#{theStuff}: at #{addedAt}"
+end
+
 get '/addGETRequest/*' do
-  if request.cookies.empty?
-    response.set_cookie( "user_session", :value => "user 123")
-  end
   addedAt = myBasquet.zadd(request)
   out = "addGETRequest request stored at #{addedAt}"
 end
 
-post '/addPzOSTRequest' do
-  if request.cookies.empty?
-    response.set_cookie( "user_session", :value => "user 123")
-  end
+post '/addPOSTRequest' do
   addedAt = myBasquet.zadd(request)
-out = "addPOSTRequest request stored at #{addedAt}"
+  out = "addPOSTRequest request stored at #{addedAt}"
 end
-
-
 
 # ==================== RETRIEVING STUFF ================
 
