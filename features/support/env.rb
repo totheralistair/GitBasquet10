@@ -1,13 +1,14 @@
-#require File.join(File.dirname(__FILE__), '..', '..', 'n11_fruit_app')
-require_relative '../../src/n11_fruit_app'
+=begin
 require 'rack/test'
+require_relative '../../src/n12_web_basquetizer'
 
 module AppHelper
   # Rack-Test expects the app method to return a Rack application
   def app
-    FruitApp
+    WebBasquetizer
   end
 end
 
 World(Rack::Test::Methods, AppHelper)
+=end
 
