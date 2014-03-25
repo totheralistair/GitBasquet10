@@ -1,3 +1,6 @@
+#### rubymine ignore files
+.idea/
+
 #################
 ## Eclipse
 #################
