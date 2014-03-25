@@ -1,17 +1,21 @@
 
-class WebMuffinBasquet
+class Basquet
 # ======= CLASS METHODS =======
   def self.aPersistentBasquet
-    @@theOneAndOnlyBasquet ||= WebMuffinBasquet.new
+    @@theOneAndOnlyBasquet ||= Basquet.new
   end
 
   def self.newPersistentBasquetPlease
-    @@theOneAndOnlyBasquet = WebMuffinBasquet.new
+    @@theOneAndOnlyBasquet = Basquet.new
   end
 
-# ======= BASIC INSTANCE METHODS =======
+# ======= INSTANCE METHODS =======
   def initialize
     @contents = Array.new
+  end
+
+  def size
+    @contents.size
   end
 
   def zadd(something)    #returns index of thing added
@@ -22,21 +26,8 @@ class WebMuffinBasquet
     @contents[index]
   end
 
-  def gimmeAll
-    @contents
-  end
-
   def gimmeLast(how_many=1)
     @contents.last(how_many)
   end
-
-  def size
-    @contents.size
-  end
-
-# ======= WEBMUFFIN ACCESS METHODS =======
-
-
-
 
 end
