@@ -4,20 +4,15 @@ class Basquet
     @contents = Array.new
   end
 
-  def add(something)    #returns index of thing added
+  def add(something)
     @contents.push(something)
-    @contents.size - 1
-  end
-
-  def gimmeAt(index)
-    @contents[index]
   end
 
   def gimmeAll
     @contents
   end
 
-  def gimmeLast(how_many=1)
+  def gimme(how_many=1)
     @contents.last(how_many)
   end
 
